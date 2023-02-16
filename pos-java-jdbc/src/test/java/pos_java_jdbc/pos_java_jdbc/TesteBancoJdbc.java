@@ -1,5 +1,7 @@
 package pos_java_jdbc.pos_java_jdbc;
 
+import java.util.List;
+
 import org.junit.Test;
 
 import dao.UserPosDao;
@@ -10,6 +12,7 @@ public class TesteBancoJdbc {
 	@Test
 	public void initBanco(){
 		UserPosDao userPosDao = new UserPosDao();
+		
 		UserPosJava userPosJava = new UserPosJava();
 		
 		userPosJava.setId(6L);
@@ -17,6 +20,36 @@ public class TesteBancoJdbc {
 		userPosJava.setEmail("Paulo.cab@gmail.com");
 		
 		userPosDao.salvar(userPosJava);
+	}
+	
+	@Test
+	public void initListar() {
+		UserPosDao dao = new UserPosDao();
+		try {
+			List<UserPosJava> list = dao.listar();
+		
+			for (UserPosJava userPosJava : list) {
+				System.out.println(userPosJava.toString());
+				System.out.println("--------------------------------");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void initBuscar () {
+		
+		UserPosDao dao = new UserPosDao();
+		try {
+			UserPosJava userPosJava = dao.buscar(4L);
+			System.out.println(userPosJava);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 }
