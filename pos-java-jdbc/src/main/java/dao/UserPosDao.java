@@ -20,11 +20,10 @@ public class UserPosDao {
 
 	public void salvar(UserPosJava userPosJava) {
 		try {
-			String sql = "insert into userposjava (id, nome, email) values (?, ?, ?)";
+			String sql = "insert into userposjava (nome, email) values (?, ?)";
 			PreparedStatement insert = connection.prepareStatement(sql);
-			insert.setLong(1, userPosJava.getId());
-			insert.setString(2, userPosJava.getNome());
-			insert.setString(3, userPosJava.getEmail());
+			insert.setString(1, userPosJava.getNome());
+			insert.setString(2, userPosJava.getEmail());
 			insert.execute();
 			connection.commit(); // Salva no banco de dados - SQL
 
